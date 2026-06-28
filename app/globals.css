@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbf8f0;
+  --foreground: #2f3128;
+  --earth: #8f6a50;
+  --clay: #b46d5b;
+  --moss: #5e7456;
+  --rose: #c9958e;
+  --oat: #eadfcb;
+  --ink-soft: #59564b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: #dfb8a7;
+  color: #28251f;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-image {
+  background-image:
+    linear-gradient(90deg, rgba(48, 44, 34, 0.72) 0%, rgba(48, 44, 34, 0.48) 43%, rgba(48, 44, 34, 0.14) 100%),
+    url("/images/hero-ritual-yoga.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.section-kicker {
+  color: var(--clay);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 4px;
+}
+
+.focus-ring:focus-visible {
+  outline-color: #9d7558;
+}
