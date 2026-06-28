@@ -291,16 +291,19 @@ export default function Home() {
       </section>
 
       <section className="bg-[#fbf8f0] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-9 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl">
             <p className="section-kicker">Для кого</p>
             <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#2f3128] sm:text-4xl">
               Для тих, кого кличе шлях Кола
             </h2>
           </div>
-          <div className="space-y-3">
+          <div className="mt-9 grid gap-3 lg:grid-cols-2 lg:items-stretch">
             {audience.map((item) => (
-              <p className="rounded-[8px] border-l-4 border-[#8f6a50] bg-[#f4ebdc] p-5 leading-7 text-[#424237]" key={item}>
+              <p
+                className="rounded-[8px] border-l-4 border-[#8f6a50] bg-[#f4ebdc] p-5 leading-7 text-[#424237]"
+                key={item}
+              >
                 {item}
               </p>
             ))}
