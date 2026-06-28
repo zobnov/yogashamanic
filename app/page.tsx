@@ -360,7 +360,7 @@ export default function Home() {
           </div>
           <a
             className="focus-ring inline-flex h-12 items-center justify-center rounded-[8px] bg-[#eadfcb] px-7 text-sm font-bold text-[#2f3128] transition hover:bg-white"
-            href="mailto:hello@example.com"
+            href="mailto:ksanazobnova@gmail.com"
           >
             Написати
           </a>
