@@ -18,11 +18,34 @@ const plans = {
   },
 } as const;
 
+function normalizeUrl(url: string) {
+  return url.replace(/\/+$/, "");
+}
+
+function getCheckoutBaseUrl(request: Request) {
+  const productionUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const deployPreviewUrl = process.env.DEPLOY_PRIME_URL || process.env.URL;
+
+  if (process.env.CONTEXT === "production" && productionUrl) {
+    return normalizeUrl(productionUrl);
+  }
+
+  if (deployPreviewUrl) {
+    return normalizeUrl(deployPreviewUrl);
+  }
+
+  if (productionUrl) {
+    return normalizeUrl(productionUrl);
+  }
+
+  return normalizeUrl(new URL(request.url).origin);
+}
+
 export async function POST(request: Request) {
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const siteUrl = getCheckoutBaseUrl(request);
 
-  if (!stripeSecretKey || !siteUrl) {
+  if (!stripeSecretKey) {
     return NextResponse.redirect(new URL("/checkout-error?reason=config", request.url), 303);
   }
 
