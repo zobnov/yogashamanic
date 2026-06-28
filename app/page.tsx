@@ -61,7 +61,7 @@ const includeGroups = [
   },
   {
     title: "Кожен день",
-    items: ["короткі «пазлики знання» без перенавантаження"],
+    items: ["Коротенькі «пазлики знання» без перенавантаження"],
   },
   {
     title: "На кожні Молодик та Повню",
@@ -353,33 +353,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#efe3d5] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-          <div className="aspect-square max-w-sm rounded-full border border-[#c9958e]/50 p-6">
-            <div className="flex h-full items-center justify-center rounded-full border border-[#8f6a50]/45 bg-[#fbf8f0] text-center">
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#b46d5b]">Повня</p>
-                <p className="mt-3 text-4xl font-semibold text-[#2f3128]">7 днів</p>
-                <p className="mx-auto mt-2 max-w-40 text-sm leading-6 text-[#59564b]">
-                  три дні до, день Повні, три дні після
-                </p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <p className="section-kicker">Обітниця медитації</p>
-            <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#2f3128] sm:text-4xl">
-              Повня як спільна точка присутності
-            </h2>
-            <p className="mt-5 text-base leading-8 text-[#59564b]">
-              Три дні до Повні, у день Повні та три дні після ми медитуємо з
-              мантрами, тримаючи спільну увагу, намір і м'яку дисципліну.
-              Цей розділ можна доповнити вашим особистим текстом обітниці.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="bg-[#fbf8f0] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
         <div className="mx-auto max-w-4xl">
           <p className="section-kicker">FAQ</p>
@@ -403,23 +376,61 @@ export default function Home() {
       </section>
 
       <section id="contact" className="bg-[#5e7456] px-5 py-16 text-white sm:px-8 sm:py-24 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="max-w-3xl">
             <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#eadfcb]">Контакт</p>
             <h2 className="mt-3 text-3xl font-semibold leading-tight sm:text-5xl">
               Якщо ви відчуваєте поклик, напишіть мені для участі
             </h2>
             <p className="mt-5 text-base leading-8 text-white/82">
-              Замініть цей блок на ваш Telegram, Instagram, email або форму заявки.
-              Структура вже готова для підключення реального контакту.
+              Залиште свої контакти і повідомлення, щоб я могла відповісти вам
+              щодо участі у програмі.
             </p>
           </div>
-          <a
-            className="focus-ring inline-flex h-12 items-center justify-center rounded-[8px] bg-[#eadfcb] px-7 text-sm font-bold text-[#2f3128] transition hover:bg-white"
-            href="mailto:ksanazobnova@gmail.com"
+          <form
+            action="/contact-success"
+            className="rounded-[8px] border border-white/18 bg-white/10 p-5 sm:p-6"
+            data-netlify="true"
+            method="POST"
+            name="contact"
+            {...({ netlify: "" } as Record<string, string>)}
           >
-            Написати
-          </a>
+            <input name="form-name" type="hidden" value="contact" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-sm font-semibold text-white/86">Ім'я</span>
+                <input
+                  className="mt-2 h-12 w-full rounded-[8px] border border-white/24 bg-white px-4 text-[#2f3128] outline-none transition placeholder:text-[#8a867a] focus:border-[#eadfcb]"
+                  name="name"
+                  required
+                  type="text"
+                />
+              </label>
+              <label className="block">
+                <span className="text-sm font-semibold text-white/86">Email або телефон</span>
+                <input
+                  className="mt-2 h-12 w-full rounded-[8px] border border-white/24 bg-white px-4 text-[#2f3128] outline-none transition placeholder:text-[#8a867a] focus:border-[#eadfcb]"
+                  name="contact"
+                  required
+                  type="text"
+                />
+              </label>
+            </div>
+            <label className="mt-4 block">
+              <span className="text-sm font-semibold text-white/86">Повідомлення</span>
+              <textarea
+                className="mt-2 min-h-36 w-full resize-y rounded-[8px] border border-white/24 bg-white px-4 py-3 text-[#2f3128] outline-none transition placeholder:text-[#8a867a] focus:border-[#eadfcb]"
+                name="message"
+                required
+              />
+            </label>
+            <button
+              className="focus-ring mt-5 inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-[#eadfcb] px-7 text-sm font-bold text-[#2f3128] transition hover:bg-white sm:w-auto"
+              type="submit"
+            >
+              Надіслати
+            </button>
+          </form>
         </div>
       </section>
     </main>
