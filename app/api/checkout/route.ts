@@ -4,17 +4,17 @@ const plans = {
   summer: {
     label: "Літній сектор",
     duration: "3 місяці",
-    priceId: "price_1TnNssHx9XIt6Bgb97p02HE7",
+    priceEnv: "STRIPE_PRICE_SUMMER",
   },
   "summer-autumn": {
     label: "Літо + Осінь",
     duration: "6 місяців",
-    priceId: "price_1TnNssHx9XIt6Bgb428PqQJd",
+    priceEnv: "STRIPE_PRICE_SUMMER_AUTUMN",
   },
   "full-circle": {
     label: "Повне Коло Року",
     duration: "12 місяців",
-    priceId: "price_1TnNssHx9XIt6Bgbgf8fHWBe",
+    priceEnv: "STRIPE_PRICE_FULL_CIRCLE",
   },
 } as const;
 
@@ -34,11 +34,17 @@ export async function POST(request: Request) {
   }
 
   const plan = plans[planId as keyof typeof plans];
+  const priceId = process.env[plan.priceEnv];
+
+  if (!priceId) {
+    return NextResponse.redirect(new URL("/checkout-error?reason=config", request.url), 303);
+  }
+
   const body = new URLSearchParams({
     mode: "payment",
     success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${siteUrl}/#prices`,
-    "line_items[0][price]": plan.priceId,
+    "line_items[0][price]": priceId,
     "line_items[0][quantity]": "1",
     "metadata[program]": "Йога і Шаманське Колесо",
     "metadata[plan]": planId,
