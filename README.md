@@ -35,3 +35,4 @@ STRIPE_PRICE_FULL_CIRCLE=price_...
 The success page verifies `session_id` with Stripe before showing the paid
 confirmation. If the session is missing, invalid, or not paid, the page
 redirects to `/checkout-error`.
+ 
