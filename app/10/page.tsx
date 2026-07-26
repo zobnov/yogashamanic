@@ -67,12 +67,15 @@ export default function TenJourneysPage() {
               недосяжним, можна прийти у моїй програмі.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a
-                className="focus-ring inline-flex h-12 items-center justify-center rounded-[8px] bg-[#eadfcb] px-6 text-sm font-bold text-[#312d22] transition hover:bg-white"
-                href="#price"
-              >
-                Дізнатися вартість
-              </a>
+              <form action="/api/checkout" method="post">
+                <input name="plan" type="hidden" value="ten-journeys" />
+                <button
+                  className="focus-ring inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-[#eadfcb] px-6 text-sm font-bold text-[#312d22] transition hover:bg-white sm:w-auto"
+                  type="submit"
+                >
+                  Приєднатися до подорожі
+                </button>
+              </form>
               <a
                 className="focus-ring inline-flex h-12 items-center justify-center rounded-[8px] border border-white/45 px-6 text-sm font-bold text-white transition hover:bg-white/12"
                 href="#program"
