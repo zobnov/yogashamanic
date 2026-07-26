@@ -219,9 +219,15 @@ export default function TenJourneysPage() {
               хочеш продовжити шлях у моїй річній програмі «Йога і Шаманське
               Коло», усі $81 будуть зараховані в оплату річної участі.
             </p>
-            <div className="mt-7 rounded-[8px] border border-dashed border-[#b46d5b]/50 bg-[#f4ebdc] p-4 text-sm leading-6 text-[#59564b]">
-              Плейсхолдер: кнопка оплати Stripe буде додана наступним кроком.
-            </div>
+            <form action="/api/checkout" className="mt-7" method="post">
+              <input name="plan" type="hidden" value="ten-journeys" />
+              <button
+                className="focus-ring inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-[#5e7456] px-6 text-sm font-bold text-white transition hover:bg-[#4f6549]"
+                type="submit"
+              >
+                Приєднатися до подорожі
+              </button>
+            </form>
           </aside>
         </div>
       </section>

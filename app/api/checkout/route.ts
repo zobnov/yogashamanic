@@ -16,6 +16,11 @@ const plans = {
     duration: "12 місяців",
     priceEnv: "STRIPE_PRICE_FULL_CIRCLE",
   },
+  "ten-journeys": {
+    label: "10 подорожей до центрів сили",
+    duration: "10 тижнів",
+    priceEnv: "STRIPE_PRICE_TEN_JOURNEYS",
+  },
 } as const;
 
 export async function POST(request: Request) {
@@ -46,11 +51,11 @@ export async function POST(request: Request) {
     cancel_url: `${siteUrl}/#prices`,
     "line_items[0][price]": priceId,
     "line_items[0][quantity]": "1",
-    "metadata[program]": "Йога і Шаманське Колесо",
+    "metadata[program]": plan.label,
     "metadata[plan]": planId,
     "metadata[plan_label]": plan.label,
     "metadata[duration]": plan.duration,
-    "payment_intent_data[metadata][program]": "Йога і Шаманське Колесо",
+    "payment_intent_data[metadata][program]": plan.label,
     "payment_intent_data[metadata][plan]": planId,
   });
 
