@@ -41,7 +41,7 @@ export default function TenJourneysPage() {
   return (
     <main className="overflow-hidden bg-[#fbf8f0] text-[#2f3128]">
       <section className="relative bg-[#2f3128] px-5 py-6 text-white sm:px-8 lg:px-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(201,149,142,0.28),transparent_34%),radial-gradient(circle_at_82%_18%,rgba(234,223,203,0.18),transparent_32%),linear-gradient(135deg,rgba(47,49,40,1),rgba(94,116,86,0.94))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(47,49,40,0.78)_0%,rgba(47,49,40,0.56)_44%,rgba(47,49,40,0.2)_100%),url('/images/hero-chakra-journeys.jpg')] bg-cover bg-center" />
         <div className="relative mx-auto flex min-h-[88svh] w-full max-w-7xl flex-col justify-between">
           <nav className="flex items-center justify-between gap-4 text-sm text-white/82">
             <a className="focus-ring font-semibold" href="/" aria-label="На головну сторінку">
