@@ -163,7 +163,7 @@ export default function Home() {
 
           <div className="max-w-3xl pb-10 pt-24 sm:pb-16 lg:pt-32">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#eadfcb]">
-              Початок: 30 червня 2026 року
+              Ми почали 30 червня 2026 року, але можна долучитись просто зараз
             </p>
             <h1 className="max-w-2xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
               Йога і Шаманське Колесо

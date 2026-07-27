@@ -36,6 +36,63 @@ const formatItems = [
   "Записи всіх зустрічей.",
 ];
 
+const faqs = [
+  {
+    question: "Чому подорожей 10, якщо чакр 7?",
+    answer: [
+      "Система семи чакр походить з індуїстської традиції. У шаманській традиції, з якою ми будемо працювати, розглядають дев'ять центрів сили.",
+      "Кожна з перших дев'яти зустрічей присвячена окремому центру, а десята зустріч — це інтеграція всього пройденого досвіду, гармонізація всіх центрів сили та завершення подорожі.",
+    ],
+  },
+  {
+    question: "Чи потрібен досвід у йозі або шаманських практиках?",
+    answer: [
+      "Ні.",
+      "Програма створена так, щоб у ній було комфортно і тим, хто лише починає знайомство з практиками, і тим, хто вже давно займається йогою чи медитацією.",
+      "Усі практики пояснюються крок за кроком.",
+    ],
+  },
+  {
+    question: "Що, якщо я пропущу зустріч?",
+    answer: [
+      "Усі зустрічі записуються.",
+      "Ти зможеш пройти практику у зручний для себе час і поставити запитання у Telegram-спільноті.",
+    ],
+  },
+  {
+    question: "Чи це релігійна програма?",
+    answer: [
+      "Ні.",
+      "Програма не належить до жодної релігії.",
+      "Ми працюємо з тілом, увагою, символами, архетипами, шаманськими подорожами та практиками, які допомагають глибше пізнати себе.",
+      "Кожна учасниця може проживати цей досвід відповідно до власних переконань.",
+    ],
+  },
+  {
+    question: "Що таке шаманська подорож?",
+    answer: [
+      "Це практика глибокої внутрішньої роботи у стані трансу під ритм шаманського бубна.",
+      "Під час неї людина не втрачає свідомість і не перебуває під чиїмось контролем. Навпаки — вона залишається уважною до своїх внутрішніх образів, відчуттів і символів, які можуть стати джерелом нових усвідомлень.",
+    ],
+  },
+  {
+    question: "Що я отримаю одразу після оплати?",
+    answer: ["Одразу після оплати ти отримаєш:"],
+    list: [
+      "доступ до Telegram-спільноти;",
+      "індивідуальний розклад «Твоя Тотемна Тварина» із семи карт та його тлумачення;",
+      "рекомендації щодо підготовки до першої подорожі.",
+    ],
+  },
+  {
+    question: "Якщо я зрозумію, що хочу продовжити навчання?",
+    answer: [
+      "У будь-який момент — до початку, під час або після завершення цієї програми — ти зможеш перейти до моєї річної програми «Йога і Шаманське Коло».",
+      "Усі $81, сплачені за цю подорож, будуть повністю зараховані у вартість річної участі.",
+    ],
+  },
+];
+
 export default function TenJourneysPage() {
   return (
     <main className="overflow-hidden bg-[#fbf8f0] text-[#2f3128]">
@@ -243,6 +300,41 @@ export default function TenJourneysPage() {
               </button>
             </form>
           </aside>
+        </div>
+      </section>
+
+      <section className="bg-[#fbf8f0] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
+        <div className="mx-auto max-w-4xl">
+          <p className="section-kicker">FAQ</p>
+          <h2 className="mt-3 text-3xl font-semibold leading-tight text-[#2f3128] sm:text-4xl">
+            Питання та відповіді
+          </h2>
+          <div className="mt-8 divide-y divide-[#dfd2be] border-y border-[#dfd2be]">
+            {faqs.map((faq) => (
+              <details className="group py-5" key={faq.question}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-[#2f3128]">
+                  {faq.question}
+                  <span className="grid size-8 shrink-0 place-items-center rounded-full border border-[#b46d5b] text-[#b46d5b] transition group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <div className="max-w-2xl space-y-4 pt-4 leading-8 text-[#59564b]">
+                  {faq.answer.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  {"list" in faq ? (
+                    <ul className="grid gap-2 pt-1">
+                      {faq.list.map((item) => (
+                        <li className="ml-5 list-disc" key={item}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
     </main>
