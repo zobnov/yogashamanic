@@ -322,7 +322,7 @@ export default function TenJourneysPage() {
                   {faq.answer.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
-                  {"list" in faq ? (
+                  {faq.list ? (
                     <ul className="grid gap-2 pt-1">
                       {faq.list.map((item) => (
                         <li className="ml-5 list-disc" key={item}>
