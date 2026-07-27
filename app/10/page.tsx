@@ -9,24 +9,23 @@ const chakraIntro = [
 
 const chakraShadow = [
   "Емоції та травматичний досвід, отримані нами у цьому житті, нашим родом та навіть у попередніх втіленнях, впливають на роботу чакр, затьмарюють їхнє сяйво і уповільнюють роботу цих енергетичних колес.",
-  "Світ починає здаватися нам темним.",
-  "Ми не можемо бути сміливими та креативними, ми залишаємося у режимі виживання і бачимо тільки загрози навколо нас, тривожимося про проблеми, не намагаючись знайти рішення.",
+  "Світ починає здаватися нам темним. Ми не можемо бути сміливими та креативними, залишаємося у режимі виживання, бачимо тільки загрози навколо нас і тривожимося про проблеми, не намагаючись знайти рішення.",
 ];
 
 const chakraIntentions = [
-  "Очистити чакри від історій, які подібно архаїчним нашаруванням гальмують рух твого транспортного засобу.",
-  "Звільнити свою силу.",
-  "Пробудити потенціал.",
-  "Оживити тіло та відкрити розум.",
+  "очистити чакри від історій, які подібно архаїчним нашаруванням гальмують рух твого транспортного засобу;",
+  "звільнити свою силу;",
+  "пробудити потенціал;",
+  "оживити тіло та відкрити розум.",
 ];
 
 const telegramItems = [
-  "додаткові практики;",
-  "матеріали про кожен центр сили;",
-  "інформація про камені, кольори, архетипи та шаманську символіку кожної чакри;",
-  "мантри для гармонізації;",
-  "відповіді на запитання;",
-  "підтримка групи.",
+  "Додаткові практики",
+  "Матеріали про кожен центр сили",
+  "Інформація про камені, кольори, архетипи та шаманську символіку кожної чакри",
+  "Мантри для гармонізації",
+  "Відповіді на запитання",
+  "Підтримка групи",
 ];
 
 const formatItems = [
@@ -96,7 +95,7 @@ export default function TenJourneysPage() {
       <section className="px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
           <div>
-            <p className="section-kicker">Центри сили</p>
+            <p className="section-kicker">Про центри сили</p>
             <h2 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
               Десять доступів до різних аспектів твоєї сили
             </h2>
@@ -110,15 +109,18 @@ export default function TenJourneysPage() {
       </section>
 
       <section className="bg-[#f4ebdc] px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
-          {chakraShadow.map((paragraph) => (
-            <article
-              className="rounded-[8px] border border-[#dfd2be] bg-[#fbf8f0] p-5 leading-8 text-[#59564b] shadow-[0_18px_55px_rgba(91,75,57,0.08)]"
-              key={paragraph}
-            >
-              {paragraph}
-            </article>
-          ))}
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
+          <div>
+            <p className="section-kicker">Коли колеса сповільнюються</p>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+              Що впливає на роботу чакр
+            </h2>
+          </div>
+          <div className="space-y-5 text-base leading-8 text-[#59564b]">
+            {chakraShadow.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -130,15 +132,24 @@ export default function TenJourneysPage() {
               Очистити, звільнити, пробудити
             </h2>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {chakraIntentions.map((item) => (
-              <div
-                className="rounded-[8px] border border-[#dfd2be] bg-white/70 p-5 text-[#424237]"
-                key={item}
-              >
-                {item}
-              </div>
-            ))}
+          <div>
+            <p className="text-base leading-8 text-[#59564b]">
+              У програмі ми будемо рухатися до того, щоб:
+            </p>
+            <ul className="mt-6 grid gap-3">
+              {chakraIntentions.map((item) => (
+                <li
+                  className="list-none rounded-[8px] border border-[#dfd2be] bg-white/70 p-5 text-[#424237]"
+                  key={item}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-base leading-8 text-[#59564b]">
+              У цей прекрасний збалансований стан, який може здаватися
+              недосяжним, можна прийти у моїй програмі.
+            </p>
           </div>
         </div>
       </section>
