@@ -33,26 +33,37 @@ const plans = {
   },
 } as const;
 
-export async function POST(request: Request) {
-  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+function checkoutErrorUrl(requestUrl: string, reason: string, planId?: string) {
+  const url = new URL("/checkout-error", requestUrl);
+  url.searchParams.set("reason", reason);
 
-  if (!stripeSecretKey || !siteUrl) {
-    return NextResponse.redirect(new URL("/checkout-error?reason=config", request.url), 303);
+  if (planId && planId in plans) {
+    url.searchParams.set("plan", planId);
   }
 
+  return url;
+}
+
+export async function POST(request: Request) {
   const formData = await request.formData();
   const planId = formData.get("plan");
 
   if (typeof planId !== "string" || !(planId in plans)) {
-    return NextResponse.redirect(new URL("/checkout-error?reason=plan", request.url), 303);
+    return NextResponse.redirect(checkoutErrorUrl(request.url, "plan"), 303);
+  }
+
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+  if (!stripeSecretKey || !siteUrl) {
+    return NextResponse.redirect(checkoutErrorUrl(request.url, "config", planId), 303);
   }
 
   const plan = plans[planId as keyof typeof plans];
   const priceId = process.env[plan.priceEnv];
 
   if (!priceId) {
-    return NextResponse.redirect(new URL("/checkout-error?reason=config", request.url), 303);
+    return NextResponse.redirect(checkoutErrorUrl(request.url, "config", planId), 303);
   }
 
   const body = new URLSearchParams({
@@ -79,13 +90,13 @@ export async function POST(request: Request) {
   });
 
   if (!response.ok) {
-    return NextResponse.redirect(new URL("/checkout-error?reason=stripe", request.url), 303);
+    return NextResponse.redirect(checkoutErrorUrl(request.url, "stripe", planId), 303);
   }
 
   const session = (await response.json()) as { url?: string };
 
   if (!session.url) {
-    return NextResponse.redirect(new URL("/checkout-error?reason=session", request.url), 303);
+    return NextResponse.redirect(checkoutErrorUrl(request.url, "session", planId), 303);
   }
 
   return NextResponse.redirect(session.url, 303);

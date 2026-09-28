@@ -1,6 +1,23 @@
 import Link from "next/link";
 
-export default function CheckoutErrorPage() {
+type CheckoutErrorPageProps = {
+  searchParams: Promise<{
+    plan?: string;
+  }>;
+};
+
+const returnPaths = {
+  cards: "/cards",
+  "ten-journeys": "/10",
+} as const;
+
+export default async function CheckoutErrorPage({ searchParams }: CheckoutErrorPageProps) {
+  const { plan } = await searchParams;
+  const returnPath =
+    plan && plan in returnPaths
+      ? returnPaths[plan as keyof typeof returnPaths]
+      : "/#prices";
+
   return (
     <main className="min-h-screen bg-[#fbf8f0] px-5 py-16 text-[#2f3128] sm:px-8 lg:px-10">
       <section className="mx-auto flex min-h-[70vh] max-w-3xl flex-col justify-center">
@@ -13,7 +30,7 @@ export default function CheckoutErrorPage() {
         </p>
         <Link
           className="focus-ring mt-9 inline-flex h-12 w-fit items-center justify-center rounded-[8px] bg-[#5e7456] px-6 text-sm font-bold text-white transition hover:bg-[#4f6549]"
-          href="/#prices"
+          href={returnPath}
         >
           До варіантів участі
         </Link>
