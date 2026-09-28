@@ -5,21 +5,31 @@ const plans = {
     label: "Літній сектор",
     duration: "3 місяці",
     priceEnv: "STRIPE_PRICE_SUMMER",
+    cancelPath: "/#prices",
   },
   "summer-autumn": {
     label: "Літо + Осінь",
     duration: "6 місяців",
     priceEnv: "STRIPE_PRICE_SUMMER_AUTUMN",
+    cancelPath: "/#prices",
   },
   "full-circle": {
     label: "Повне Коло Року",
     duration: "12 місяців",
     priceEnv: "STRIPE_PRICE_FULL_CIRCLE",
+    cancelPath: "/#prices",
   },
   "ten-journeys": {
     label: "10 подорожей до центрів сили",
     duration: "10 тижнів",
     priceEnv: "STRIPE_PRICE_TEN_JOURNEYS",
+    cancelPath: "/10#price",
+  },
+  cards: {
+    label: "Подорож з картами через темну частину року",
+    duration: "6 місяців",
+    priceEnv: "STRIPE_PRICE_CARDS",
+    cancelPath: "/cards#price",
   },
 } as const;
 
@@ -48,7 +58,7 @@ export async function POST(request: Request) {
   const body = new URLSearchParams({
     mode: "payment",
     success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${siteUrl}/#prices`,
+    cancel_url: `${siteUrl}${plan.cancelPath}`,
     "line_items[0][price]": priceId,
     "line_items[0][quantity]": "1",
     "metadata[program]": plan.label,

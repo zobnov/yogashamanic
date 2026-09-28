@@ -30,6 +30,12 @@ const successContent = {
     linkEnv: "TELEGRAM_LINK_TEN_JOURNEYS",
     backHref: "/10",
   },
+  cards: {
+    title: "Дякуємо за приєднання до подорожі",
+    body: "Далі, будь ласка, натисніть на посилання, щоб долучитися до закритої спільноти:",
+    linkEnv: "TELEGRAM_LINK_CARDS",
+    backHref: "/cards",
+  },
 } as const;
 
 async function getVerifiedCheckoutSession(sessionId: string) {
@@ -76,7 +82,12 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
   }
 
   const plan = session.metadata?.plan;
-  const content = plan === "ten-journeys" ? successContent["ten-journeys"] : successContent.default;
+  const content =
+    plan === "ten-journeys"
+      ? successContent["ten-journeys"]
+      : plan === "cards"
+        ? successContent.cards
+        : successContent.default;
   const telegramLink = process.env[content.linkEnv];
 
   return (
