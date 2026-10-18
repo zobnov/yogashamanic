@@ -241,7 +241,7 @@ export default function CardsPage() {
                 className="focus-ring inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-[#eadfcb] px-6 text-sm font-bold text-[#312d22] transition hover:bg-white sm:w-auto"
                 type="submit"
               >
-                Приєднатися до подорожі
+                ПРИЄДНАТИСЯ ДО ПОДОРОЖІ
               </button>
             </form>
           </div>
@@ -338,6 +338,20 @@ export default function CardsPage() {
               додаткову карту.
             </p>
           </div>
+
+          <form
+            action="/api/checkout"
+            className="mt-10 flex justify-center border-t border-[#cdd4c2] pt-8"
+            method="post"
+          >
+            <input name="plan" type="hidden" value="cards" />
+            <button
+              className="focus-ring inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-[#5e7456] px-6 text-sm font-bold text-white transition hover:bg-[#4f6549] sm:w-auto"
+              type="submit"
+            >
+              ПРИЄДНАТИСЯ ДО ПОДОРОЖІ
+            </button>
+          </form>
         </div>
       </section>
 
@@ -451,7 +465,7 @@ export default function CardsPage() {
                 className="focus-ring inline-flex h-12 w-full items-center justify-center rounded-[8px] bg-[#eadfcb] px-6 text-sm font-bold text-[#312d22] transition hover:bg-white sm:w-auto"
                 type="submit"
               >
-                Приєднатися до подорожі
+                ПРИЄДНАТИСЯ ДО ПОДОРОЖІ
               </button>
             </form>
           </div>
