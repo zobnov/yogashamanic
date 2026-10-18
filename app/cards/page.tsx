@@ -4,18 +4,10 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Подорож з картами через темну частину року",
   description:
-    "12 індивідуальних розкладів із 12 різних колод карт від Молодика після Осіннього Рівнодення до Повні після Весняного Рівнодення.",
+    "11 індивідуальних розкладів із 11 різних колод карт та 11 особистих онлайн-зустрічей від Повні Мисливця до Повні після Весняного Рівнодення.",
 };
 
 const cardDraws = [
-  {
-    date: "10 жовтня",
-    moon: "Молодик",
-    image: "/images/cards/card-02-hq.jpg",
-    paragraphs: [
-      "Звертаємося до Оракулу «Міська Ворона» і приймаємо підказки з розкладу «Три Воронячі Пера».",
-    ],
-  },
   {
     date: "26 жовтня",
     moon: "Повня Мисливця",
@@ -123,7 +115,6 @@ const cardDraws = [
 ] as const;
 
 const mobileImagePositions = [
-  "50% 43%",
   "50% 48%",
   "50% 48%",
   "50% 44%",
@@ -145,9 +136,9 @@ const faqs = [
     placeholder: false,
   },
   {
-    question: "Чи є зустрічі або записи зустрічей?",
+    question: "Чи передбачені особисті зустрічі?",
     answer:
-      "Ні, це індивідуальні розклади. Комунікація проходить у Telegram.",
+      "Кожен розклад супроводжується особистою зустріччю онлайн тривалістю 60 хв. Усього в програмі — 11 таких зустрічей.",
     placeholder: false,
   },
   {
@@ -194,13 +185,13 @@ const timelineSeasons = [
     markerClass: "border-[#b46d5b]",
   },
   {
-    start: 4,
+    start: 3,
     lineClass: "bg-[#66695f]",
     accentClass: "text-[#5d6157]",
     markerClass: "border-[#66695f]",
   },
   {
-    start: 10,
+    start: 9,
     lineClass: "bg-[#6f8667]",
     accentClass: "text-[#5e7456]",
     markerClass: "border-[#6f8667]",
@@ -236,14 +227,13 @@ export default function CardsPage() {
 
           <div className="max-w-4xl pb-10 pt-24 sm:pb-16 lg:pt-32">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#eadfcb]">
-              12 розкладів · 12 різних колод
+              11 розкладів · 11 колод · 11 особистих зустрічей
             </p>
             <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
               Подорож з картами через темну частину року
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/88 sm:text-xl">
-              Від першого Молодика після Осіннього Рівнодення до першої Повні
-              після Весняного Рівнодення.
+              Від Повні Мисливця до першої Повні після Весняного Рівнодення.
             </p>
             <form action="/api/checkout" className="mt-9" method="post">
               <input name="plan" type="hidden" value="cards" />
@@ -257,7 +247,7 @@ export default function CardsPage() {
           </div>
 
           <div className="grid gap-3 border-t border-white/20 py-5 text-sm text-white/80 sm:grid-cols-3">
-            <p>Початок: 10 жовтня</p>
+            <p>Початок: 26 жовтня</p>
             <p>Завершення: 22 березня</p>
             <p className="flex flex-wrap items-baseline gap-x-2">
               <span>Вартість:</span>
@@ -294,8 +284,9 @@ export default function CardsPage() {
               зайве, не розкидатися своїм часом та увагою.
             </p>
             <p className="text-xl font-medium leading-9 text-[#2f3128]">
-              Запрошую тебе у подорож, яка триватиме півроку та надасть тобі 12
-              індивідуальних розкладів із 12 різних колод карт.
+              Запрошую тебе у подорож, яка триватиме півроку та надасть тобі 11
+              індивідуальних розкладів із 11 різних колод карт і 11 особистих
+              онлайн-зустрічей.
             </p>
           </div>
         </div>
@@ -307,7 +298,7 @@ export default function CardsPage() {
             <div>
               <p className="section-kicker">Початок</p>
               <p className="mt-3 text-xl font-semibold leading-8">
-                Перший Молодик після Осіннього Рівнодення — 10 жовтня
+                Повня Мисливця — 26 жовтня
               </p>
             </div>
             <div>
@@ -328,7 +319,7 @@ export default function CardsPage() {
             </div>
           </div>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-3">
+          <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <p className="leading-8 text-[#59564b]">
               Кожний Молодик та кожну Повню ти будеш отримувати розклад з
               колоди, яка резонує з енергіями цього періоду року.
@@ -337,6 +328,10 @@ export default function CardsPage() {
               Всі карти будуть в особистих текстових чи аудіоповідомленнях у
               Telegram. Одна карта на день, щоб у тебе було достатньо часу для
               інтеграції глибоких і красивих значень.
+            </p>
+            <p className="leading-8 text-[#59564b]">
+              Кожен розклад супроводжується особистою зустріччю онлайн
+              тривалістю 60 хв. Усього в програмі — 11 таких зустрічей.
             </p>
             <p className="leading-8 text-[#59564b]">
               Після кожного розкладу можна задати одне питання чи витягти
@@ -348,7 +343,7 @@ export default function CardsPage() {
 
       <section id="schedule" className="px-5 py-16 sm:px-8 sm:py-24 lg:px-10">
         <div className="mx-auto max-w-6xl">
-          <p className="section-kicker">12 колод протягом півроку</p>
+          <p className="section-kicker">11 колод протягом півроку</p>
           <h2 className="mt-3 text-3xl font-semibold leading-tight sm:text-5xl">
             Календар розкладів карт
           </h2>
